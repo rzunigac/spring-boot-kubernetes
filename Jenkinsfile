@@ -39,5 +39,12 @@ pipeline {
       }
     }
     
+    stage('DependencyCheck'){
+      steps{
+        // Se agrega el argumento --disableYarnAudit para evitar warning, otra opción es instalar Yarn en Jenkins
+        dependencyCheck additionalArguments: '--disableYarnAudit --format HTML', odcInstallation: 'DependencyCheck'
+      }
+    }
+    
   }
 }
